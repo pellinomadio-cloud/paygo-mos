@@ -780,6 +780,7 @@ const UpgradeAccountPage: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [confirmError, setConfirmError] = useState('');
+  const [proof, setProof] = useState<File | null>(null);
 
   const levels = [
     { name: 'Silver', price: '₦5,500', icon: <i className="fas fa-square text-orange-400 rotate-45 text-xl"></i> },
@@ -800,6 +801,10 @@ const UpgradeAccountPage: React.FC = () => {
   };
 
   const handleConfirm = () => {
+    if (!proof) {
+      setConfirmError('Please upload payment proof before confirming.');
+      return;
+    }
     setConfirmLoading(true);
     setConfirmError('');
     setTimeout(() => {
@@ -879,24 +884,79 @@ const UpgradeAccountPage: React.FC = () => {
               Step One: Complete Payment
             </h3>
             <p className="text-xs text-gray-500 mb-6 dark:text-gray-400">
-              Click the button below to proceed to our secure payment gateway and complete your {selectedLevel?.price} payment for {selectedLevel?.name} upgrade.
+              Please transfer <b>{selectedLevel?.price}</b> to the account details below for your <b>{selectedLevel?.name}</b> upgrade.
             </p>
-            <button 
-              onClick={() => window.open("https://checkout.nomba.com/payment-link/5346435767", "_blank")}
-              className="w-full h-14 bg-purple-600 text-white rounded-2xl text-base font-bold shadow-lg active:scale-95 transition-all flex items-center justify-center space-x-2"
-            >
-              <span>Pay Now</span>
-              <i className="fas fa-external-link-alt text-xs"></i>
-            </button>
+            
+            <div className="bg-gray-50 rounded-2xl p-5 space-y-4 border border-gray-100 dark:bg-gray-900 dark:border-gray-700">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Bank Name</p>
+                  <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Palmpay</p>
+                </div>
+                <i className="fas fa-university text-gray-300"></i>
+              </div>
+              
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Number</p>
+                  <p className="text-lg font-black text-purple-600 tracking-wider">8999628190</p>
+                </div>
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText('8999628190');
+                    alert('Account number copied!');
+                  }}
+                  className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-600 active:scale-90 transition-all dark:bg-gray-800"
+                >
+                  <i className="fas fa-copy"></i>
+                </button>
+              </div>
+              
+              <div>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Name</p>
+                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">ohi ayo abdulasalam</p>
+              </div>
+            </div>
           </div>
 
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
             <h3 className="text-sm font-bold text-gray-800 mb-4 dark:text-white flex items-center">
               <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-[10px] mr-2">2</span>
-              Step Two: Confirm Payment
+              Step Two: Upload Proof
+            </h3>
+            <p className="text-xs text-gray-500 mb-4 dark:text-gray-400">
+              Upload a screenshot or photo of your successful payment receipt.
+            </p>
+            
+            <label className="relative flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 transition-all dark:border-gray-700 dark:hover:bg-gray-900">
+              {proof ? (
+                <div className="flex flex-col items-center">
+                  <i className="fas fa-file-image text-green-500 text-2xl mb-2"></i>
+                  <p className="text-[10px] font-bold text-gray-800 dark:text-white truncate max-w-[200px]">{proof.name}</p>
+                  <p className="text-[8px] text-gray-400 uppercase mt-1">Click to change</p>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center">
+                  <i className="fas fa-cloud-upload-alt text-gray-300 text-3xl mb-2"></i>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase">Select Payment Proof</p>
+                </div>
+              )}
+              <input 
+                type="file" 
+                className="hidden" 
+                accept="image/*"
+                onChange={(e) => setProof(e.target.files?.[0] || null)}
+              />
+            </label>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+            <h3 className="text-sm font-bold text-gray-800 mb-4 dark:text-white flex items-center">
+              <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-[10px] mr-2">3</span>
+              Step Three: Confirm Payment
             </h3>
             <p className="text-xs text-gray-500 mb-6 dark:text-gray-400">
-              After completing your payment, click the button below to verify and activate your upgrade.
+              After uploading your proof, click the button below to verify and activate your upgrade.
             </p>
             
             {confirmError && (
@@ -981,6 +1041,7 @@ const BuyPayIdPage: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [confirmError, setConfirmError] = useState('');
+  const [proof, setProof] = useState<File | null>(null);
 
   const handlePay = (e: React.FormEvent) => {
     e.preventDefault();
@@ -998,6 +1059,10 @@ const BuyPayIdPage: React.FC = () => {
   };
 
   const handleConfirm = () => {
+    if (!proof) {
+      setConfirmError('Please upload payment proof before confirming.');
+      return;
+    }
     setConfirmLoading(true);
     setConfirmError('');
     setTimeout(() => {
@@ -1052,24 +1117,79 @@ const BuyPayIdPage: React.FC = () => {
               Step One: Complete Payment
             </h3>
             <p className="text-xs text-gray-500 mb-6 dark:text-gray-400">
-              Click the button below to proceed to our secure payment gateway and complete your ₦7,000 payment.
+              Please transfer <b>₦7,000</b> to the account details below to purchase your <b>PAY ID</b>.
             </p>
-            <button 
-              onClick={() => window.open("https://checkout.nomba.com/payment-link/8358889853", "_blank")}
-              className="w-full h-14 bg-purple-600 text-white rounded-2xl text-base font-bold shadow-lg active:scale-95 transition-all flex items-center justify-center space-x-2"
-            >
-              <span>Pay Now</span>
-              <i className="fas fa-external-link-alt text-xs"></i>
-            </button>
+            
+            <div className="bg-gray-50 rounded-2xl p-5 space-y-4 border border-gray-100 dark:bg-gray-900 dark:border-gray-700">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Bank Name</p>
+                  <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Palmpay</p>
+                </div>
+                <i className="fas fa-university text-gray-300"></i>
+              </div>
+              
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Number</p>
+                  <p className="text-lg font-black text-purple-600 tracking-wider">8999628190</p>
+                </div>
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText('8999628190');
+                    alert('Account number copied!');
+                  }}
+                  className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-600 active:scale-90 transition-all dark:bg-gray-800"
+                >
+                  <i className="fas fa-copy"></i>
+                </button>
+              </div>
+              
+              <div>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Name</p>
+                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">ohi ayo abdulasalam</p>
+              </div>
+            </div>
           </div>
 
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
             <h3 className="text-sm font-bold text-gray-800 mb-4 dark:text-white flex items-center">
               <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-[10px] mr-2">2</span>
-              Step Two: Confirm Payment
+              Step Two: Upload Proof
+            </h3>
+            <p className="text-xs text-gray-500 mb-4 dark:text-gray-400">
+              Upload a screenshot or photo of your successful payment receipt.
+            </p>
+            
+            <label className="relative flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 transition-all dark:border-gray-700 dark:hover:bg-gray-900">
+              {proof ? (
+                <div className="flex flex-col items-center">
+                  <i className="fas fa-file-image text-green-500 text-2xl mb-2"></i>
+                  <p className="text-[10px] font-bold text-gray-800 dark:text-white truncate max-w-[200px]">{proof.name}</p>
+                  <p className="text-[8px] text-gray-400 uppercase mt-1">Click to change</p>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center">
+                  <i className="fas fa-cloud-upload-alt text-gray-300 text-3xl mb-2"></i>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase">Select Payment Proof</p>
+                </div>
+              )}
+              <input 
+                type="file" 
+                className="hidden" 
+                accept="image/*"
+                onChange={(e) => setProof(e.target.files?.[0] || null)}
+              />
+            </label>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+            <h3 className="text-sm font-bold text-gray-800 mb-4 dark:text-white flex items-center">
+              <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-[10px] mr-2">3</span>
+              Step Three: Confirm Payment
             </h3>
             <p className="text-xs text-gray-500 mb-6 dark:text-gray-400">
-              After completing your payment, click the button below to verify and activate your PAY ID.
+              After uploading your proof, click the button below to verify and activate your PAY ID.
             </p>
             
             {confirmError && (
