@@ -891,7 +891,7 @@ const UpgradeAccountPage: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Bank Name</p>
-                  <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Palmpay</p>
+                  <p className="text-sm font-black text-gray-800 dark:text-white uppercase">beststar mfb</p>
                 </div>
                 <i className="fas fa-university text-gray-300"></i>
               </div>
@@ -899,11 +899,11 @@ const UpgradeAccountPage: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Number</p>
-                  <p className="text-lg font-black text-purple-600 tracking-wider">8910541770</p>
+                  <p className="text-lg font-black text-purple-600 tracking-wider">6010828933</p>
                 </div>
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('8910541770');
+                    navigator.clipboard.writeText('6010828933');
                     alert('Account number copied!');
                   }}
                   className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-600 active:scale-90 transition-all dark:bg-gray-800"
@@ -914,7 +914,7 @@ const UpgradeAccountPage: React.FC = () => {
               
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Name</p>
-                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">precious ogechi charles</p>
+                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Rebecca omolayo</p>
               </div>
             </div>
           </div>
@@ -1124,7 +1124,7 @@ const BuyPayIdPage: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Bank Name</p>
-                  <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Palmpay</p>
+                  <p className="text-sm font-black text-gray-800 dark:text-white uppercase">beststar mfb</p>
                 </div>
                 <i className="fas fa-university text-gray-300"></i>
               </div>
@@ -1132,11 +1132,11 @@ const BuyPayIdPage: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Number</p>
-                  <p className="text-lg font-black text-purple-600 tracking-wider">8910541770</p>
+                  <p className="text-lg font-black text-purple-600 tracking-wider">6010828933</p>
                 </div>
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('8910541770');
+                    navigator.clipboard.writeText('6010828933');
                     alert('Account number copied!');
                   }}
                   className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-600 active:scale-90 transition-all dark:bg-gray-800"
@@ -1147,7 +1147,7 @@ const BuyPayIdPage: React.FC = () => {
               
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Name</p>
-                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">precious ogechi charles</p>
+                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Rebecca omolayo</p>
               </div>
             </div>
           </div>
