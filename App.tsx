@@ -899,11 +899,11 @@ const UpgradeAccountPage: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Number</p>
-                  <p className="text-lg font-black text-purple-600 tracking-wider">5257807157</p>
+                  <p className="text-lg font-black text-purple-600 tracking-wider">5288283942</p>
                 </div>
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('5257807157');
+                    navigator.clipboard.writeText('5288283942');
                     alert('Account number copied!');
                   }}
                   className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-600 active:scale-90 transition-all dark:bg-gray-800"
@@ -914,7 +914,7 @@ const UpgradeAccountPage: React.FC = () => {
               
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Name</p>
-                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">precious ogechi charles</p>
+                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Israel ayomide obajemu</p>
               </div>
             </div>
           </div>
@@ -1132,11 +1132,11 @@ const BuyPayIdPage: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Number</p>
-                  <p className="text-lg font-black text-purple-600 tracking-wider">5257807157</p>
+                  <p className="text-lg font-black text-purple-600 tracking-wider">5288283942</p>
                 </div>
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('5257807157');
+                    navigator.clipboard.writeText('5288283942');
                     alert('Account number copied!');
                   }}
                   className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-600 active:scale-90 transition-all dark:bg-gray-800"
@@ -1147,7 +1147,7 @@ const BuyPayIdPage: React.FC = () => {
               
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Account Name</p>
-                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">precious ogechi charles</p>
+                <p className="text-sm font-black text-gray-800 dark:text-white uppercase">Israel ayomide obajemu</p>
               </div>
             </div>
           </div>
@@ -1561,7 +1561,7 @@ const DashboardPage: React.FC = () => {
         navigate('/upgrade', { state: { name, email } });
       }
     } else if (id === 'group') {
-      window.open("https://t.me/chix9ja", "_blank");
+      window.open("https://t.me/chix9jacom", "_blank");
     } else if (id === 'support') {
       window.open("https://t.me/paygo77", "_blank");
     }
@@ -1837,10 +1837,10 @@ const TelegramAdvert: React.FC = () => {
         <i className="fab fa-telegram text-xl"></i>
         <div className="text-left">
           <p className="text-[10px] font-black uppercase tracking-widest opacity-80">Join Us</p>
-          <p className="text-xs font-bold">Join our Telegram channel @chix9ja</p>
+          <p className="text-xs font-bold">Join our Telegram channel @chix9jacom</p>
         </div>
         <button 
-          onClick={() => window.open("https://t.me/chix9ja", "_blank")}
+          onClick={() => window.open("https://t.me/chix9jacom", "_blank")}
           className="bg-white text-blue-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase ml-2"
         >
           JOIN
